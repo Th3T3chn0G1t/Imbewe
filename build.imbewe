@@ -1,0 +1,25 @@
+intrin imbewe_output_directory ?= 'build';
+intrin imbewe_default_task ?= link;
+
+config<imbewe_compiler> compiler = 'clang';
+config cflags += compiler.flags['all_warnings'] + compiler.flags['cstd_99'];
+
+if compiler.isclang and compiler.version.less('13.0.0') {
+	error('Requires clang >= 13');
+}
+
+var sources = glob('src', match = imbewe_csource);
+var objects = '';
+var executable = '';
+
+task<sources> compile = {
+	objects = compiler.compile(sources, output = imbewe_object);
+}
+
+task<compile> link = {
+	executable = compiler.link(objects, output = imbewe_executable, name = 'test');
+}
+
+task<link> run = {
+	os.exec(executable);
+}

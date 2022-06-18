@@ -1,0 +1,54 @@
+keywords:
+    - declarations: [
+        'intrin',
+        'config',
+        'var',
+        'task'
+    ]
+
+    - control flow: [
+        'if',
+        'elif',
+        'else',
+
+        'while',
+        'for',
+        'forin',
+
+        'break',
+        'continue',
+
+        'and',
+        'or',
+        'not'
+    ]
+
+non-alphabetical tokens:
+    - \{: 'scope begin, map literal begin'
+    - \}: 'scope end, map literal end'
+
+    - \[: 'index begin, array literal begin'
+    - \]: 'index end, array literal end'
+
+    - \<: 'declaration specifier begin'
+    - \>: 'declaration specifier end'
+
+    - \(: 'param list begin'
+    - \): 'param list end'
+
+    - \': 'string literal begin/end'
+
+    - \=: 'variable assignation, non-positional parameter assignation'
+    - \?\=: 'variable assignation if not set, non-positional parameter assignation if not set'
+    - \+\=: 'variable appending, non-positional parameter appending'
+    - \?\+\=: 'variable appending if set, non-positional parameter appending if set'
+
+    - \=\=: 'comparison'
+
+    - \,: 'parameter delimiter'
+
+    - \.: 'member accessor'
+
+    - \+: 'concatonation'
+
+    - \;: 'statement delimiter'
