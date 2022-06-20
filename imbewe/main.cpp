@@ -13,6 +13,7 @@ int main(int argc, char** argv) {
     for(const auto& token : tokens) {
         switch(token.token_type) {
             case imbewe::token::type::none: std::cout << "none"; break;
+            case imbewe::token::type::newline: std::cout << "newline"; break;
             case imbewe::token::type::keyword_intrin: std::cout << "keyword_intrin"; break;
             case imbewe::token::type::keyword_config: std::cout << "keyword_config"; break;
             case imbewe::token::type::keyword_var: std::cout << "keyword_var"; break;
@@ -45,7 +46,6 @@ int main(int argc, char** argv) {
             case imbewe::token::type::parameter_delimiter: std::cout << "parameter_delimiter"; break;
             case imbewe::token::type::member_accessor: std::cout << "member_accessor"; break;
             case imbewe::token::type::concatonate: std::cout << "concatonate"; break;
-            case imbewe::token::type::statement_delimiter: std::cout << "statement_delimiter"; break;
             case imbewe::token::type::identifier: std::cout << "identifier - `" << source.buffer->substr(token.offset, token.length) << '`' ; break;
         }
         std::cout << std::endl;

@@ -17,6 +17,8 @@ namespace imbewe {
         for(std::string::iterator i = this->buffer->begin(); i < this->buffer->end();) {
             char c = *i;
 
+            std::size_t i_offset = 1;
+
             std::string::iterator start = i;
             std::string::iterator end = this->buffer->end();
             token t{token::type::none, 0, 0};
@@ -25,11 +27,18 @@ namespace imbewe {
                 end = std::find(start, this->buffer->end(), '\'');
                 t.token_type = token::type::string_literal;
             }
+            else if(c == '\n') {
+                end = start;
+                t.token_type = token::type::newline;
+            }
             else if(is_identifier_char(c)) {
                 end = std::find_if_not(i, this->buffer->end(), is_identifier_char);
                 token::map::const_iterator found = token::keywords.find(std::string(start, end));
                 if(found != token::keywords.end()) t.token_type = found->second;
-                else t.token_type = token::type::identifier;
+                else {
+                    t.token_type = token::type::identifier;
+                    i_offset = 0;
+                }
             }
             else if(is_operator_char(c)) {
                 end = std::find_if_not(i, this->buffer->end(), is_operator_char);
@@ -40,6 +49,7 @@ namespace imbewe {
                     i = end + 1;
                     continue;
                 }
+                i_offset = 0;
             }
             else if(is_blank_char(c)) {
                 i++;
@@ -47,13 +57,15 @@ namespace imbewe {
             }
             else {
                 std::cerr << "Unknown token: " << *i << std::endl;
+                i++;
+                continue;
             }
 
             t.offset = start - this->buffer->begin();
             t.length = end - start;
             tokens.push_back(t);
 
-            i = end + 1;
+            i = end + i_offset;
         }
 
         return std::move(tokens);

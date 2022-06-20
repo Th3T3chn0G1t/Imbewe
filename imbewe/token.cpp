@@ -38,7 +38,6 @@ namespace imbewe {
         {"==", token::type::compare},
         {",", token::type::parameter_delimiter},
         {".", token::type::member_accessor},
-        {"+", token::type::concatonate},
-        {";", token::type::statement_delimiter}
+        {"+", token::type::concatonate}
     };
 };

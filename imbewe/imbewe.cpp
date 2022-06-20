@@ -5,13 +5,13 @@
 
 namespace imbewe {
     bool is_identifier_char(const char c) {
-        return !is_operator_char(c) && c != '\'' && !is_blank_char(c);
+        return !is_operator_char(c) && c != '\'' && c != '\n' && !is_blank_char(c);
     }
     bool is_operator_char(const char c) {
-        return c == '{' || c == '}' || c == '[' || c == ']' || c == '<' || c == '>' || c == '(' || c == ')' || c == '=' || c == '?' || c == ',' || c == '.' || c == '+' || c == ';';
+        return c == '{' || c == '}' || c == '[' || c == ']' || c == '<' || c == '>' || c == '(' || c == ')' || c == '=' || c == '?' || c == ',' || c == '.' || c == '+';
     }
     bool is_blank_char(const char c) {
-        return isblank(c) || c == ' ' || c == '\t' || c == '\n' || c == '\r';
+        return isblank(c) || c == ' ' || c == '\t' || c == '\r';
     }
 
     std::vector<std::string> split(const std::string& str, const char delimiter) {

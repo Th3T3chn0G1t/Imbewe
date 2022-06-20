@@ -39,10 +39,9 @@ tmp/*
 vulkan/*
 build/*
 
-genstone/vendor/tmp/*
-
 filename
 test.c
+test.cpp
 
 .vscode
 .vs

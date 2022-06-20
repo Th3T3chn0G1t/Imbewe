@@ -9,6 +9,8 @@ namespace imbewe {
         enum class type {
             none,
 
+            newline,
+
             keyword_intrin,
             keyword_config,
             keyword_var,
@@ -55,8 +57,6 @@ namespace imbewe {
             member_accessor,
 
             concatonate,
-
-            statement_delimiter,
 
             identifier
         };
