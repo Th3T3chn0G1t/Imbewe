@@ -26,6 +26,7 @@ namespace imbewe {
 
             keyword_break,
             keyword_continue,
+            keyword_return,
 
             keyword_and,
             keyword_or,
@@ -65,7 +66,7 @@ namespace imbewe {
         static const map keywords;
         static const map operators;
 
-        type token_type{type::none};
+        type kind{type::none};
 
         std::size_t offset{0};
         std::size_t length{0};

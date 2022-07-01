@@ -25,25 +25,25 @@ namespace imbewe {
             if(c == '\'') {
                 start++;
                 end = std::find(start, this->buffer->end(), '\'');
-                t.token_type = token::type::string_literal;
+                t.kind = token::type::string_literal;
             }
             else if(c == '\n') {
                 end = start;
-                t.token_type = token::type::newline;
+                t.kind = token::type::newline;
             }
             else if(is_identifier_char(c)) {
                 end = std::find_if_not(i, this->buffer->end(), is_identifier_char);
                 token::map::const_iterator found = token::keywords.find(std::string(start, end));
-                if(found != token::keywords.end()) t.token_type = found->second;
+                if(found != token::keywords.end()) t.kind = found->second;
                 else {
-                    t.token_type = token::type::identifier;
+                    t.kind = token::type::identifier;
                     i_offset = 0;
                 }
             }
             else if(is_operator_char(c)) {
                 end = std::find_if_not(i, this->buffer->end(), is_operator_char);
                 token::map::const_iterator found = token::operators.find(std::string(start, end));
-                if(found != token::operators.end()) t.token_type = found->second;
+                if(found != token::operators.end()) t.kind = found->second;
                 else {
                     std::cerr << "Unknown token: " << std::string(i, end) << std::endl;
                     i = end + 1;

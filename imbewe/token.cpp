@@ -17,6 +17,7 @@ namespace imbewe {
         {"forin", token::type::keyword_forin},
         {"break", token::type::keyword_break},
         {"continue", token::type::keyword_continue},
+        {"return", token::type::keyword_return},
         {"and", token::type::keyword_and},
         {"or", token::type::keyword_or},
         {"not", token::type::keyword_not}

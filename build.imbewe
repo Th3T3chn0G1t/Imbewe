@@ -2,7 +2,7 @@ intrin imbewe_output_directory ?= 'build'
 intrin imbewe_default_task ?= link
 
 config<imbewe_compiler> compiler = 'clang'
-config cflags += compiler.flags['all_warnings'] + compiler.flags['cstd_99']
+config<> cflags ?+= compiler.flags['all_warnings'] + compiler.flags['cstd_99']
 
 if compiler.is_clang and compiler.version.less('13.0.0') {
 	error('Requires clang >= 13')
